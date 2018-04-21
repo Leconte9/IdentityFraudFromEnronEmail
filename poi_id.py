@@ -313,4 +313,34 @@ features_list = KBest_features
 
 dump_classifier_and_data(clf, my_dataset, features_list)
 
+#python tester.py
+# GaussianNB(priors=None)
+# Accuracy: 0.84200	Precision: 0.38622	Recall: 0.31400	F1: 0.34639	F2: 0.32620
+# Total predictions: 15000	True positives:  628	False positives:  998	False negatives: 1372	True negatives: 12002
 
+
+# DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
+#                       max_features=None, max_leaf_nodes=None,
+#                       min_impurity_decrease=0.0, min_impurity_split=None,
+#                       min_samples_leaf=1, min_samples_split=2,
+#                       min_weight_fraction_leaf=0.0, presort=False, random_state=None,
+#                       splitter='best')
+# Accuracy: 0.81427	Precision: 0.30131	Recall: 0.29800	F1: 0.29965	F2: 0.29866
+# Total predictions: 15000	True positives:  596	False positives: 1382	False negatives: 1404	True negatives: 11618
+
+# RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini', 
+#                       max_depth=None, max_features='auto', max_leaf_nodes=None, 
+#                       min_impurity_decrease=0.0, min_impurity_split=None, 
+#                       min_samples_leaf=1, min_samples_split=2, 
+#                       min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=1, 
+#                       oob_score=False, random_state=None, verbose=0, 
+#                       warm_start=False)
+# Accuracy: 0.85767	Precision: 0.41636	Recall: 0.16800 F1: 0.23940	F2: 0.19076
+# Total predictions: 15000	True positives:  336	False positives:  471	False negatives: 1664	True negatives: 12529
+
+#LogisticRegression(C=100000.0, class_weight=None, dual=False,
+#                   fit_intercept=True, intercept_scaling=1, max_iter=100,
+#                   multi_class='ovr', n_jobs=1, penalty='l2', random_state=None,
+#                   solver='liblinear', tol=0.0001, verbose=0, warm_start=False)
+# Accuracy: 0.69527	Precision: 0.10016	Recall: 0.16100	F1: 0.12349	F2: 0.14356
+# Total predictions: 15000	True positives:  322	False positives: 2893	False negatives: 1678	True negatives: 10107
