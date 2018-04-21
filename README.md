@@ -203,6 +203,7 @@ Logistic Regression| 0.70740 | 0.09795 | 0.14550 | 0.69527 | 0.10016 | 0.16100
 
 ## Usage of Evaluation Metrics
 Recall: True Positive / (True Positive + False Negative). Out of all the items that are truly positive, how many were correctly classified as positive. Or simply, how many positive items were 'recalled' from the dataset.
+
 Precision: True Positive / (True Positive + False Positive). Out of all the items labeled as positive, how many truly belong to the positive class.
 
 The chosen algorithm is `Naive Bayes` with new features, which resulted in `precision of 0.38622` and `recall of 0.31400`
