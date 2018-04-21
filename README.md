@@ -50,7 +50,7 @@ While using features, 'salary' and 'bonus', as input for the scatterplot:
 
 Obviously, there is an outliers on the right corner of the plot, of which the key value is 'TOTAL'. This kind of data should be removed from the dataset.
 
-![scatter plot2]()
+![scatter plot2](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/PopOutTOTAL.png)
 
 
 Question 2: What features did you end up using in your POI identifier, and what selection process did you use to pick them? Did you have to do any scaling? Why or why not? As part of the assignment, you should attempt to engineer your own feature that does not come ready-made in the dataset -- explain what feature you tried to make, and the rationale behind it. (You do not necessarily have to use it in the final analysis, only engineer and test it.) In your feature selection step, if you used an algorithm like a decision tree, please also give the feature importances of the features that you use, and if you used an automated feature selection function like SelectKBest, please report the feature scores and reasons for your choice of parameter values.  [relevant rubric items: “create new features”, “intelligently select features”, “properly scale features”]
@@ -76,6 +76,7 @@ for names in my_dataset:
 
 features_list_new = POI_label + financial_features + email_features_number + ['messages_from_poi'] + ['messages_to_poi/deferral_payments']
 ```
+## Intelligently Select Feature
 In order to select best features, I used an automated feature selection provided by sklearn: 'SelectKBest' function, to obtain the best K scores of features. 
 ```python
 [(25.09754152873549, 'exercised_stock_options', True),
@@ -100,19 +101,35 @@ In order to select best features, I used an automated feature selection provided
     (0.16416449823428736, 'from_messages', False),
     (0.06498431172371151, 'restricted_stock_deferred', False)]
 ```
-
-
-
-
-
-
-## Intelligently Select Feature
+New features list will be:
+```python
+['poi','salary', 'total_payments', 'bonus', 'deferred_income', 'total_stock_value', 'exercised_stock_options', \
+'long_term_incentive', 'restricted_stock', 'shared_receipt_with_poi', 'messages_to_poi/deferral_payments']
+ ```
 
 ## Properly Scale Features
-
-
+Selected features had different units and some of the features had very big values, they needs to be transformed. Scaler tool, MinMaxScaler from sklearn would be a good choice then.
+```python
+# dataset with new features
+from sklearn import preprocessing
+n_data = featureFormat(my_dataset, KBest_features, sort_keys = True)
+n_labels, n_features = targetFeatureSplit(n_data)
+scaler = preprocessing.MinMaxScaler()
+n_features = scaler.fit_transform(n_features)
+```
 
 Question 3: What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  [relevant rubric item: “pick an algorithm”]
+## Pick an Algorithm
+I've tried 4 different algorithms, 'Naive Bayes', 'Decision Tree', 'Random Forest' and 'Logistic Regression' and ended up using 'Random Forest' with new features as it scored the highest evaluation metrics. 
+Algorithm | accuracy | precision | recall | accuracy | precision | recall 
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|| `original features` | `original features` | `original features` | `new features` | `new features` | `new features`
+Naive Bayes | 0.862068965517 | 0.4 | 0.285714285714 | 0.827586206897 | 0.333333333333 | 0.428571428571 
+Decision Tree| 0.793103448276 | 0.272727272727 | 0.428571428571 | 0.793103448276 | 0.307692307692 | 0.571428571429 
+Random Forest| 0.862068965517 | 0.333333333333 | 0.142857142857 | 0.913793103448 | 0.75 | 0.428571428571 
+Logistic Regression| 0.879310344828 | 0.5 | 0.142857142857 | 0.862068965517 | 0.4 | 0.285714285714
+
+可以删掉As the performance shown above, some algorithms perform better while including the new features, while some not.
 
 Question 4: What does it mean to tune the parameters of an algorithm, and what can happen if you don’t do this well?  How did you tune the parameters of your particular algorithm? What parameters did you tune? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier).  [relevant rubric items: “discuss parameter tuning”, “tune the algorithm”]
 
