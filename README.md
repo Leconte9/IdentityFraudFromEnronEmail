@@ -53,9 +53,11 @@ Obviously, there is an outliers on the right corner of the plot, of which the ke
 
 ![scatter plot2](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/TOTALremoved.png)
 
+After removing the outliers, the plot of dataset looks more reasonable than before.
+
 ## Optimize Features
 ### Create New Features
-I created two new features, named as 'messages_from_poi' and 'messages_to_poi/deferral_payments', based on the orginal 5 features, 'from_messages', 'to_messages', 'from_poi_to_this_person', 'from_this_person_to_poi' and 'deferral_payments'.
+I created two new features, named as 'messages_from_poi' and 'messages_to_poi/deferral_payments', based on 5 orginal features, 'from_messages', 'to_messages', 'from_poi_to_this_person', 'from_this_person_to_poi' and 'deferral_payments'.
 ```python
 for names in my_dataset:
     from_messages = my_dataset[names]['from_messages']
@@ -128,13 +130,12 @@ Decision Tree| 0.793103448276 | 0.142857142857 | 0.142857142857 | 0.810344827586
 Random Forest| 0.862068965517 | 0.333333333333 | 0.142857142857 | 0.844827586207 | 0.333333333333 | 0.285714285714 
 Logistic Regression| 0.879310344828 | 0.5 | 0.142857142857 | 0.862068965517 | 0.4 | 0.285714285714
 
-Question 4: What does it mean to tune the parameters of an algorithm, and what can happen if you don’t do this well?  How did you tune the parameters of your particular algorithm? What parameters did you tune? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier).  [relevant rubric items: “discuss parameter tuning”, “tune the algorithm”]
 ## Tune the Parameters of an Algorithm
 ### Discuss Parameter Tuning
-Some classifier algorithms belongs to a kind of Hyper-Parameters Model, which cannot be directly learnt within estimators. In sklearn they are passed as arguments to the constructor of the estimator classes. Tuning the parameters of an algorithm is to optimize the values of those parameters to achive the best performance. If we choose the best algorithm but using some worse parameters, it is impossible to get the result that we are expecting. 
+Some classifier algorithms belongs to a kind of Hyper-Parameters Model, which cannot be directly learnt within estimators. In sklearn they are passed as arguments to the constructor of the estimator classes. Tuning the parameters of an algorithm is to optimize the values of those parameters to achive the best performance. If we choose the best algorithm but using some inappropriate parameters, it still cannot get the result that we are expecting. 
 
-### Tune the AQlgorithm
-GridSearchCV from sklearn would be a good choice for this project, as it exhaustively considers all parameter combinations..
+### Tune the Algorithm
+GridSearchCV from sklearn would be a good choice for this project, as it exhaustively considers all parameter combinations.
 
 ```python
 from sklearn import tree
@@ -181,7 +182,6 @@ Decision Tree recall:  0.142857142857
 ```
 As we can see from above evaluation metrics results, the algorithm performed better after using GridSearchCV, and also noticed the best parameters should be used.
 
-Question 5: What is validation, and what’s a classic mistake you can make if you do it wrong? How did you validate your analysis?  [relevant rubric items: “discuss validation”, “validation strategy”]
 ## Validation
 ### Discuss Validation
 Learning the parameters of a prediction function and testing it on the same data is a methodological mistake: a model that would just repeat the labels of the samples that it has just seen would have a perfect score but would fail to predict anything useful on yet-unseen data. This situation is called overfitting. 
@@ -201,7 +201,6 @@ Decision Tree| 0.81373 | 0.30229 | 0.30350 | 0.81427 | 0.30131 | 0.29800
 Random Forest| 0.85600 | 0.39770 | 0.15550 | 0.85767 | 0.41636 | 0.16800 
 Logistic Regression| 0.70740 | 0.09795 | 0.14550 | 0.69527 | 0.10016 | 0.16100
 
-Question 6: Give at least 2 evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm’s performance. [relevant rubric item: “usage of evaluation metrics”]
 ## Usage of Evaluation Metrics
 Recall: True Positive / (True Positive + False Negative). Out of all the items that are truly positive, how many were correctly classified as positive. Or simply, how many positive items were 'recalled' from the dataset.
 Precision: True Positive / (True Positive + False Positive). Out of all the items labeled as positive, how many truly belong to the positive class.
