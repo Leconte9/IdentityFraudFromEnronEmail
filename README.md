@@ -46,10 +46,12 @@ print "The Number of POIs: ", count_poi  # There are 18 POI in dataset.
 ### Outlier Investigation
 As we all know, outliers can make a big difference on the result we would processing. Identifying and cleaning away outliers is something we should always think about when looking at a dataset for the first time. Visualization will be one of the most powerful tools for finding outliers. I will use the matplotlib.pyplot module to help with the plots. 
 While using features, 'salary' and 'bonus', as input for the scatterplot. 
- ![scatter plot1](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/enron_outliers.png)
+
+![scatter plot1](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/enron_outliers.png)
 
 Obviously, there is an outliers on the right corner of the plot, of which the key value is 'TOTAL'.This kind of data should be removed from the dataset. 
- ![scatter plot2](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/TOTALremoved.png)
+
+![scatter plot2](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/TOTALremoved.png)
 
 ## Optimize Features
 ### Create New Features
