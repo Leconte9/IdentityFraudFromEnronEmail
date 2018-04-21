@@ -49,7 +49,7 @@ While using features, 'salary' and 'bonus', as input for the scatterplot.
 ![scatter plot1](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/enron_outliers.png)
 
 Obviously, there is an outliers on the right corner of the plot, of which the key value is 'TOTAL'. This kind of data should be removed from the dataset.
-![scatter plot2](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/PopOutTOTAL.png)
+![scatter plot2](https://github.com/Leconte9/IdentityFraudFromEnronEmail/blob/master/TOTALremoved.png)
 
 ## Optimize Features
 ### Create New Features
